@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Exempel på split och join
+        let timeString = "12:30";
+        const timeArr = timeString.split(":");
+
+        console.log(`timme: ${timeArr[0]} minuter: ${timeArr[1]}`)
+
+        console.log(`annat format: ${timeArr.join("h")} `)
+
+        // Objekt
+        const veckodagar = {
+            "må": "måndag",
+            "ti": "tisdag",
+            "on": "onsdag"
+        }
+        console.log(`I går var det ${veckodagar.on}`)
+
+        // Objekt i array
+        const fruits = [
+            { name: "Apple", taste: "sweet"},
+            { name: "Lemon", taste: "sour" }
+        ]
+
+        // Denna datastruktur är lätt att loopa!
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(`${fruits[i].name} tastes ${fruits[i].taste}`);
+        }
+    </script>
+</body>
+</html>

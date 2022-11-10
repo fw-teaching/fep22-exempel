@@ -10,8 +10,10 @@
     <h2>Personal Trainer</h2>
     <div>Hur länge har du motionerat i dag?</div>
     <input id="minutes" type="text" placeholder="minuter">
-    <input id="btn-ok" type="button" value="OK" onclick="getPtFeedback()">
+    <input id="btn-ok" type="button" value="OK1" onclick="getPtFeedback()">
+    <input id="btn-ok" type="button" value="OK2" onclick="runPT()">
     <p id="out">..</p>
+    <p id="out2">..</p>
 
     <script>
         const minTime = 20;
@@ -33,6 +35,32 @@
              
             console.log(outputText);
             document.querySelector('#out').innerText = outputText;
+        }
+
+        /**
+         * version med funtionsargument och returvärde
+         */
+        function getPtFeedback2(minuter) {
+            console.log("getPtFeedback2()");
+
+            if (minuter == 0) {
+                return "En vilodag är ok, men låt det inte bli en vana!";
+            } else if (minuter < minTime) {
+                return `I kortaste laget, du borde träna minst ${minTime} minuter.`;
+            } else if (minuter > maxTime) {
+                return `Det var hurtigt av dig, men träna helst inte mer än ${maxTime} minuter`;
+            }
+
+            return "Bra jobbat, fortsätt i samma stil!";
+        }
+
+        function runPT() {
+            // Avläs input 
+            const minuter = Number(document.querySelector('#minutes').value);
+            // Anropa funktionen med ett argument och ta emot returvärdet
+            const feedback = getPtFeedback2(minuter);
+            // Skriv in feedbacken på sidan
+            document.querySelector('#out2').innerText = feedback;
         }
 
     </script>
