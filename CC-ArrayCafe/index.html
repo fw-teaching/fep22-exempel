@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p><span style="font-size:x-large;">Code Challenge: Array Café</span></p>
+
+    <p>Skapa ett nytt html-dokument (och starta live server) i VSCode, du kan koda direkt i &lt;script&gt;-taggarna i html-dokumentet. testa att det funkar genom att skriva ut något i konsolen.</p>
+    
+    <p>Du har ett café som på modernt sätt har sina varor i ett datorprogram. Produktdatabasen består av tre arrays och funkar så att index alltid motsvarar varandra. Så det första namnet kostar det första priset och det finns det första lagersaldot på lager.<br />
+    &nbsp;</p>
+    
+    <div style="color:#000000;background-color:#ffffff;font-weight:normal;font-size:12.6px;line-height:17px;white-space:pre;">
+    <div><span style="font-size:larger;"><span style="color:#0000ff;">const</span><span style="color:#000000;"> </span><span style="color:#0070c1;">names</span><span style="color:#000000;"> = [</span><span style="color:#a31515;"> "Kaffe"</span><span style="color:#000000;">, </span><span style="color:#a31515;">"Munk"</span><span style="color:#000000;">, </span><span style="color:#a31515;">"Glass"</span><span style="color:#000000;"> ]</span><br />
+    <span style="color:#0000ff;">const</span><span style="color:#000000;"> </span><span style="color:#0070c1;">prices</span><span style="color:#000000;"> = [</span><span style="color:#098658;"> 3</span><span style="color:#000000;">, </span><span style="color:#098658;">3.5</span><span style="color:#000000;">, </span><span style="color:#098658;">4</span><span style="color:#000000;"> ]</span></span><br />
+    <span style="font-size:larger;"><span style="color:#0000ff;">const</span><span style="color:#000000;"> </span><span style="color:#0070c1;">stock</span><span style="color:#000000;"> = [ </span><span style="color:#098658;">100</span><span style="color:#000000;">, </span><span style="color:#098658;">15</span><span style="color:#000000;">, </span><span style="color:#098658;">45</span><span style="color:#000000;"> ]</span></span></div>
+    
+    <div>&nbsp;</div>
+    </div>
+    
+    <p><strong>Grundutförande:</strong></p>
+    
+    <ul>
+        <li>Genom att använda lämplig string-konkateneringsmetod och direkt hänvisa till värdena i dessa arrays, skriv ut i konsolen eller som alert:<span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string"> <em>"En Munk kostar 3.5 €, vi har 15 st."</em></span></span></span></span></li>
+        <li>Skriv en rad kod mellan array-definitionerna och utskriften för att ändra priset på den produkt du nyss skrev ut. Kör programmet på nytt och se det ändrade priset: <span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string"><em>"En Munk kostar <strong>5 €</strong>, vi har 15 st."</em></span></span></span></span></li>
+    </ul>
+    
+    <p><strong><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Vidareutveckling 1:</span></span></span></span></strong></p>
+    
+    <ul>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Skriv en for-loop som skriver ut hela sortimentet i konsolen </span></span></span></span></li>
+    </ul>
+    
+    <p><strong><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Vidareutveckling 2:</span></span></span></span></strong></p>
+    
+    <ul>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Det finns rätt stora risker för att någonting går fel när man har all information i skilda arrays. </span></span></span></span></li>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Skapa en ny array </span></span></span></span><span style="color:#0000ff;">const</span><span style="color:#000000;"> </span><span style="color:#0070c1;">products</span><span style="color:#000000;"> = [</span><span style="color:#000000;">]</span></li>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Bygg om produktregistret så att varje produkt är ett objekt som har egenskaperna (properties) <em>name</em>, <em>price</em> och <em>stock</em>, sätt in dessa nya objekt direkt i products-arrayn (de behöver alltså inte ha egna variabelnamn)</span></span></span></span></li>
+        <li>Skriv en <em><strong>for of</strong></em> eller <em><strong>for in</strong></em>-loop för att skriva ut det nya produktregistret (som alltså är en array som innehåller objekt!)</li>
+    </ul>
+    
+    <p><strong>Vidareutveckling 3:</strong></p>
+    
+    <ul>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">När detta lyckats, skriv ut samma sak på html-sidan, t.ex. i en &lt;ul&gt; med en &lt;li&gt; för varje element. </span></span></span></span></li>
+        <li><span class="message-body-wrapper"><span class="message-flex-body"><span class="message-body devtools-monospace"><span class="objectBox objectBox-string">Gör produkterna klickbara så att texten från grundutförandet skrivs ut i en &lt;div&gt; när man klickar på en produkt.</span></span></span></span></li>
+    </ul>
+    
+    <p>&nbsp;</p>
+    
+    <p><em>Lämna in uppgiften när du är klar genom att skriva t.ex. “done” och lämna in. Du behöver inte ha klarat av eventuella vidareutvecklingar och du behöver inte lämna in någon kod. Genom att lämna in visar du att du varit med!</em></p>
+       
+</body>
+</html>
