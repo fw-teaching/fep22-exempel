@@ -7,18 +7,45 @@
     <title>Document</title>
 </head>
 <body>
+    <ul>
+        <li>Första</li>
+        <li>Andra</li>
+        <li>Tredje</li>
+    </ul>
     <script>
         for (let i = 0; i < 10; i++) {
             console.log(i)
         }
 
         // Loopa array med for
+        console.log("---- for")
         myArr = [1,3,5,7,9];
         for (let i = 0; i < myArr.length; i++) {
             console.log(`${i}: ${myArr[i]}`);
         }
 
+        // Loopa array med for of
+        console.log("---- for of ")
+        for (const myElem of myArr) {
+            console.log(myElem)
+        }
 
+        // Loopa array med for in
+        console.log("---- for in ")
+        for (const i in myArr) {
+            console.log(`${i}: ${myArr[i]}`);
+        }
+
+        // Loopa med forEach
+        console.log("---- array.forEach() ")
+        myArr.forEach(function (elem) {
+            console.log(elem);
+        });
+
+        // forEach kan användas för att loopa DOM-element
+        document.querySelectorAll('li').forEach(function (elem) {
+            console.log(elem);
+        });
 
 
     </script>
