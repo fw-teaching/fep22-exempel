@@ -1,33 +1,71 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CC Kitchen Timer</title>
 </head>
+
 <body>
-    <h1 id="timer-output"></h1>
+    <input id="input-seconds" type="text" placeholder="minuter:sekunder">
+    <input id="btn-start" type="button" value="Start">
+    <p id="timer-output"></p>
+
     <script>
         console.log("Kitchen timer INIT")
 
         // Grundutförande
-        let secondsLeft = 30;
         const outputElem = document.querySelector("#timer-output");
+        let kitchenTimer = null;
 
-        outputElem.innerText = secondsLeft;
-        const kitchenTimer = setInterval(function () {
-            secondsLeft--;
-            outputElem.innerText = secondsLeft;
-
-            if (secondsLeft <= 0) {
-                clearInterval(kitchenTimer);
-                outputElem.innerText = "Tiden är ute!"
+        function readMinSec() {
+            let seconds = document.querySelector("#input-seconds").value;
+            if (seconds.includes(':')) {
+                seconds = Number(seconds.split(':')[0])*60 + Number(seconds.split(':')[1]) // "1:30" ==> [ 60, 30 ]
             }
-            
-        }, 1000);
+            return seconds;
+        }
+
+        function timerHandler() {
+            console.log(kitchenTimer)
+            if (!kitchenTimer) {
+                // Number() konverterar t.ex. "30" till 30 
+                let secondsLeft = readMinSec();
+                
+                outputElem.innerText = secondsLeft;
+                kitchenTimer = setInterval(() => {
+                    secondsLeft--;
+
+                    let minLeft = Math.floor(secondsLeft/60)
+                    outputElem.innerText = `${minLeft}:${secondsLeft % 60}`;
+
+                    if (secondsLeft <= 0) {
+                        clearInterval(kitchenTimer);
+                        outputElem.innerText = "Tiden är ute!"
+                    }
+
+                }, 1000);
+            } else {
+                clearInterval(kitchenTimer);
+                kitchenTimer = null;
+            }
+        }
+
+        // Pilfunktion
+        document.querySelector('#btn-start').addEventListener('click', () => timerHandler());
+
+        // Traditionell funktion
+        /*
+        document.querySelector('#btn-start').addEventListener('click', function () {
+            timerHandler()
+        });
+        */
+
 
 
     </script>
 </body>
+
 </html>
