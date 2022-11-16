@@ -11,10 +11,24 @@
     <ul id="colors">
         <!-- data-hex är ett eget påhittat attribut -->
         <li style="color: red;" data-hex="#ff0000">Röd (stil inline html)</li>
-        <li data-hex="#00ff00">Grön (style.css)</li>
+        <li id="green" data-hex="#00ff00">Grön (style.css)</li>
         <li data-hex="#0000ff">Blå (js)</li>
     </ul>
 
-    <script src="script.js"></script>
+    <form method="post" action="tack.html">
+        <input type="date">
+        <input id="slider" type="range" min="0" max="100">
+
+        <script src="script.js"></script>
+
+        <p>
+            <input type="checkbox"> Jag vill gärna få ert nyhetsbrev!
+        </p>
+
+        <input type="submit">
+    </form>
+
+
+
 </body>
 </html>
