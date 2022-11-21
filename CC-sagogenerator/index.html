@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sagogenerator</title>
+</head>
+<body>
+    <input type="text" id="person" name="person" placeholder="Huvudperson">
+    <br>
+    <input type="radio" name="butik" id="butik-1" value="mjölkbutiken" checked="checked"> 
+    <label for="butik-1">Mjölkbutiken</label><br>
+    <input type="radio" name="butik" id="butik-2" value="R-kiosken"> 
+    <label for="butik-2">R-kiosken</label>
+    <br>
+    Vara: 
+    <select id="vara">
+        <option value="">--- Välj</option>
+        <option value="mjölk">Mjölk</option>
+        <option>öl</option>
+        <option>läsk</option>
+    </select>
+    <br>
+    <input type="checkbox" id="myndig"><label for="myndig">Jag är över 18 år</label>
+    <br>
+    Slutet får du skriva själv:<br>
+    <textarea id="ending">Och så var sagan slut.</textarea> 
+    <br>
+    <input type="button" id="btn-generate" value="Generera">
+    <hr>
+    
+    <div id="out"></div>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
