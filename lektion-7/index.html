@@ -7,12 +7,41 @@
     <title>Lektion 7</title>
 </head>
 <body>
+    <style>
+        .thumb {
+            height: 60px;
+            cursor: pointer;
+        }
+        #big-img {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            width: 100%;
+            height: 100%;      /*    r  g  b  alpha (genomskinlighet) */  
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #big-img > img {
+            max-width: 90%;
+            max-height: 90%;
+        }
+    </style>
 
+    <img class="thumb" src="img/amd-thumb.jpeg" data-big="img/amd.jpeg">
+    <img class="thumb" src="img/intel-thumb.jpeg" data-big="img/intel.jpeg">
+
+    <div id="big-img"><img></div>
+
+    <hr>
     <div id="welcome"></div>
     <div id="counter"></div>
     <input id="name" placeholder="Vad heter du?">
     <input type="button" id="btn-save" value="Spara">
 
-    <script src="storage.js"></script>
+    <script src="lightbox.js"></script>
+    <!--<script src="storage.js"></script>-->
 </body>
 </html>
