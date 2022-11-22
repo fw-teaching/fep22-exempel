@@ -7,6 +7,18 @@
     <title>CC Gubben i lådan</title>
 </head>
 <body>
-    
+    <style>img { width: 200px;}</style>
+    <img id="gubben" src="img/jack-closed.png">
+
+    <script>
+    const jack = document.querySelector('#gubben');
+
+    const openJack = () => jack.setAttribute('src', 'img/jack-open.png');
+    const closeJack = () => jack.setAttribute('src', 'img/jack-closed.png');
+
+    jack.addEventListener('mousedown', openJack);
+    jack.addEventListener('mouseup', closeJack);
+
+    </script>
 </body>
 </html>
