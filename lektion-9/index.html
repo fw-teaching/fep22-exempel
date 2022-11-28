@@ -7,6 +7,10 @@
     <title>Document</title>
 </head>
 <body>
+
+    <div id="joke"></div>
+
+    <hr>
     <select id="sel">
         <option value="1">Första</option>
         <option value="2" selected>Andra</option>
@@ -16,6 +20,52 @@
 
 
     <script>
+        const jokeURLTxt = 'https://v2.jokeapi.dev/joke/Programming?format=txt&type=single&safe-mode';
+        const jokeURL = 'https://v2.jokeapi.dev/joke/Programming?type=single&safe-mode';
+
+        // Traditionellt then-syntax
+        fetch(jokeURLTxt)
+            .then(resp => resp.text())
+            .then(function(respText) { // behöver inte vara pilsyntax förstås.
+                console.log(respText)
+            })
+
+        // async/await
+        async function getJoke() {
+            const resp = await fetch(jokeURL);
+            const jokeJSON = await resp.json()
+            /*
+            const jokeTxt = await resp.text();
+            const jokeJSON = JSON.parse(jokeTxt)
+            document.querySelector('#joke').innerHTML = jokeTxt;
+            */
+            console.log(jokeJSON)
+            document.querySelector('#joke').innerHTML = jokeJSON.joke;
+        }
+        getJoke();
+
+        /**
+         * JSON stringify och parse
+         */
+        const jsObj = [
+            {value: 1, title: "första"},
+            {value: 2, title: "andra"}
+        ]
+        // Konvertera till JSON-teckensträng:
+        console.log(JSON.stringify(jsObj))
+        // resultatet:
+        const jsonString = `[
+            {"value":1,"title":"första"},
+            {"value":2,"title":"andra"}
+        ]`;
+        // Konvertera tillbaka till JS-objekt (array):
+        console.log(JSON.parse(jsonString))
+
+
+        //console.log(resp);
+
+
+
         document.querySelector('#sel').addEventListener('change', () => {
             // Selectens värde fås med .value
             console.log(document.querySelector('#sel').value);
@@ -50,11 +100,11 @@
         const vd = ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'];
 
         const daysCount = (checkDay-todayDay+7) % 7;
-        console.log(`i dag är ${vd[todayDay]}, det är ${daysCount} dagar till nästa ${vd[checkDay]}`)
+        //console.log(`i dag är ${vd[todayDay]}, det är ${daysCount} dagar till nästa ${vd[checkDay]}`)
 
         // Modulo är användbar för att "börja om från noll"
         for (let i=0; i<30; i++) {
-            console.log(`${i}: ${i % 7}`)
+           // console.log(`${i}: ${i % 7}`)
         }
 
     </script>

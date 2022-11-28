@@ -8,17 +8,47 @@
 </head>
 <body>
     <style>img { width: 200px;}</style>
-    <img id="gubben" src="img/jack-closed.png">
+
+    <img id="gubben" src="img/jack-closed.png"><br>
+    <input id="slider" type="range" min="0" max="100" value="0">
 
     <script>
     const jack = document.querySelector('#gubben');
 
-    const openJack = () => jack.setAttribute('src', 'img/jack-open.png');
+    // Bara för exemplets skull, båda sätten att definiera funktioner:
+    function openJack() { 
+        jack.setAttribute('src', 'img/jack-open.png'); 
+    }
+    // ...och med pilsyntax
     const closeJack = () => jack.setAttribute('src', 'img/jack-closed.png');
+
+    // Öppna och stäng automatiskt
+    setTimeout(() => {
+        openJack();
+        setTimeout(closeJack, 1000);
+    }, 2000);
 
     jack.addEventListener('mousedown', openJack);
     jack.addEventListener('mouseup', closeJack);
 
+    const slider = document.querySelector('#slider');
+    slider.addEventListener('input', () => {
+        console.log(slider.value);
+        if (slider.value > 70) {
+            openJack();
+        } else {
+            closeJack();
+        }
+    });
+
+
+
+    // Undvik error från icke-existerande element:
+    // ANVÄND SPARSAMT!
+    if (document.querySelector('#foo') !== null) {
+        const foo = document.querySelector('#foo').innerHTML;
+    }
+   
     </script>
 </body>
 </html>
