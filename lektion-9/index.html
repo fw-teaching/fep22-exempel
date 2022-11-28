@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="sel">
+        <option value="1">Första</option>
+        <option value="2" selected>Andra</option>
+        <option value="3">Tredje</option>
+    </select>
+
+
+
+    <script>
+        document.querySelector('#sel').addEventListener('change', () => {
+            // Selectens värde fås med .value
+            console.log(document.querySelector('#sel').value);
+
+            let valdOrdningsnummer = null;
+            let nummerText = '';
+            // Inte så: onödig redundant
+            if (document.querySelector('#sel').value == 2) {
+                valdOrdningsnummer = 2;
+                nummerText = 'andra';
+            } else if (document.querySelector('#sel').value == 3) {
+                valdOrdningsnummer = 3;
+                nummerText = 'tredje';
+            } 
+            // Gör i stället
+            const ordningsOrd = ['första', 'andra', 'tredje'];
+            valdOrdningsnummer = document.querySelector('#sel').value;
+            nummerText = ordningsOrd[valdOrdningsnummer-1];
+
+        });
+
+        // Ändra på värdet med JS:
+        document.querySelector('#sel').value = 3;
+
+        /**
+         * Räkna ut datum för nästa infallande veckodag
+         */
+        const today = new Date();
+        const todayDay = 1; // today.getDay()
+        const checkDay = 3;
+
+        const vd = ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'];
+
+        const daysCount = (checkDay-todayDay+7) % 7;
+        console.log(`i dag är ${vd[todayDay]}, det är ${daysCount} dagar till nästa ${vd[checkDay]}`)
+
+        // Modulo är användbar för att "börja om från noll"
+        for (let i=0; i<30; i++) {
+            console.log(`${i}: ${i % 7}`)
+        }
+
+    </script>
+</body>
+</html>
