@@ -14,6 +14,8 @@ async function loadContent(contentUrl) {
     document.querySelector('#content').innerHTML = content;
 }
 
+/** Stock HTML/JS/CSS */
+
 for (item of contentItems) {
     document.querySelector('#menuitems').innerHTML += `
         <div data-url="${item.url}">${item.menuTitle}</div>
@@ -38,4 +40,19 @@ document.querySelectorAll('#menuitems > div').forEach((item) => {
 });
 document.querySelector('#hamburger').addEventListener('click', toggleMenu);
 
+/** Bootstrap */
+
+for (item of contentItems) {
+    document.querySelector('.navbar-nav').innerHTML += `
+        <div class="nav-item nav-link text-white" data-url="${item.url}">${item.menuTitle}</div>
+    `;
+}
+document.querySelectorAll('.navbar-nav div').forEach((item) => {
+    console.log(item)
+    item.addEventListener('click', () => {
+        loadContent(item.getAttribute('data-url'));
+    });
+})
+
 loadContent('./content/home.html');
+
