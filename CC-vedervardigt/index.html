@@ -8,14 +8,53 @@
 </head>
 <body>
 
+    <div id="out"></div>
+    <hr>
+    <div id="Esbo"></div>
+    <hr>
+    <div id="Barcelona"></div>
+
     <script>
         // Grundutförande
-        async function getWeather() {
+        async function getWeatherHel() {
             const resp = await fetch('https://api.open-meteo.com/v1/forecast?latitude=60&longitude=25&current_weather=true&windspeed_unit=ms');
             const weather = await resp.json();
-            console.log(weather);
+            const curWeather = weather.current_weather;
+            console.log(curWeather);
+            document.querySelector('#out').innerHTML = `
+                    Det är ${curWeather.temperature}&deg;C 
+                    och det blåser ${curWeather.windspeed} m/s
+                    i Helsingfors.
+            `;
+
+            // Man kan loopa igenom ett objekt genom att konvertera till 
+            // Array med Object.keys()
+            for (key of Object.keys(curWeather)) {
+                console.log(`${key}: ${curWeather[key]}`);
+            }
+
         }
-        getWeather();
+        getWeatherHel();
+
+        /**
+         * V2
+         */
+        async function getWeather(lat, lon, city) {
+            const resp = await fetch(`
+                https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&windspeed_unit=ms
+            `);
+            const weather = await resp.json();
+            const curWeather = weather.current_weather;
+
+            document.querySelector('#'+city).innerHTML += `
+                    Det är ${curWeather.temperature}&deg;C 
+                    och det blåser ${curWeather.windspeed} m/s
+                    i ${city}.
+            `;
+
+        }
+        getWeather(60, 24, 'Esbo');
+        getWeather(40, 2, 'Barcelona');
 
     </script>
 </body>
