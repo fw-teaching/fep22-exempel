@@ -49,13 +49,43 @@
             document.querySelector('#'+city).innerHTML += `
                     Det är ${curWeather.temperature}&deg;C 
                     och det blåser ${curWeather.windspeed} m/s
-                    i ${city}.
+                    i ${city}. Det är alltså 
+                    ${(curWeather.temperature > 0) ? 'varmt' : 'kallt'}.
             `;
 
         }
         getWeather(60, 24, 'Esbo');
-        getWeather(40, 2, 'Barcelona');
 
+
+        /**
+         * V2
+         */
+         async function getPureWeather(lat, lon, city) {
+            const resp = await fetch(`
+                https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&windspeed_unit=ms
+            `);
+            const weather = await resp.json();
+            return weather.current_weather;
+        }
+
+        // Självexekverande anonym funktion (IIFE)
+        // 1: hela definitionen inom parentes
+        // 2: exekverande parenteser på slutet
+        // Kan göras med traditionellt syntax: (async function () {      
+        // ...eller pilsyntax:
+        (async () => {
+            const curWeather = await getPureWeather(40, 2, 'Barcelona');
+
+            document.querySelector('#Barcelona').innerHTML += `
+                Det är ${curWeather.temperature}&deg;C 
+                och det blåser ${curWeather.windspeed} m/s
+                i Barcelona. Det är alltså 
+                ${(curWeather.temperature > 0) ? 'varmt' : 'kallt'}.
+            `;
+
+        })();
+        
+        
     </script>
 </body>
 </html>

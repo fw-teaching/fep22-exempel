@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektion 11</title>
+</head>
+<body>
+    <script>
+        // Lyssna på load
+        window.addEventListener('load', () => {
+            console.log('Nu är precis allt laddat, t.o.m. bilder, iframes etc.');
+            document.querySelector('#out').innerHTML = 'jag existerar!';
+        });
+    </script>
+
+
+    <textarea id="t1"></textarea>
+    <div id="out"></div>
+
+    
+    <script>
+        // focus & blur
+        document.querySelector('#t1').addEventListener('focus', () => console.log('fokuserad!'));
+        document.querySelector('#t1').addEventListener('blur', () => console.log('blurrad!'));
+
+        // input
+        document.querySelector('#t1').addEventListener('input', (evt) => {
+            document.querySelector('#out').innerHTML = evt.target.value;
+        });
+
+        // hover
+        document.querySelector('#t1').addEventListener('mouseenter', (evt) => {
+            evt.target.style.backgroundColor = 'salmon';
+        });
+        document.querySelector('#t1').addEventListener('mouseleave', (evt) => {
+            evt.target.style.backgroundColor = 'white';
+        });
+
+        
+        // Array.filter() returnerar en ny array på basis av villkor i callback
+        const products = [
+            { name: "Te", price: 3, stock: 100 },
+            { name: "Bulle", price: 3.5, stock: 15 },
+            { name: "Tårtbit", price: 4, stock: 45 }
+        ];
+        const jagHarEndast = 3; // jag vet inte att den finns på products[1]
+        // vad har jag råd med?
+        //                          elementet           villkor
+        returnArray = products.filter((elem) => elem.price <= jagHarEndast)
+        console.log(`Jag har råd med ${returnArray[0].name}`)
+
+    
+
+        // LocalStorage i funktioner
+        function changeBgColorFromLocalStorage() {
+            document.body.style.backgroundColor = getBgColor();
+        }
+        function getBgColor() {
+            return localStorage.getItem('bgColor') || 'white';
+        }
+        function setBgColor(newColor) {
+            localStorage.setItem('bgColor', newColor);
+        }
+
+    </script>
+</body>
+</html>
