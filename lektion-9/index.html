@@ -94,13 +94,21 @@
          * Räkna ut datum för nästa infallande veckodag
          */
         const today = new Date();
-        const todayDay = 1; // today.getDay()
+        const nextDate = new Date();
+        const todayDay = today.getDay()
         const checkDay = 3;
 
         const vd = ['sö', 'må', 'ti', 'on', 'to', 'fr', 'lö'];
 
         const daysCount = (checkDay-todayDay+7) % 7;
-        //console.log(`i dag är ${vd[todayDay]}, det är ${daysCount} dagar till nästa ${vd[checkDay]}`)
+
+        // Räkna ut datum för idag + daysCount:
+        nextDate.setDate(nextDate.getDate() + daysCount);
+
+        console.log(`i dag är ${vd[todayDay]}, 
+            det är ${daysCount} dagar till nästa ${vd[checkDay]} 
+            som är ${nextDate.getDate()}.${nextDate.getMonth()+1}`)
+
 
         // Modulo är användbar för att "börja om från noll"
         for (let i=0; i<30; i++) {
